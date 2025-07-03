@@ -1,0 +1,8 @@
+1. replace favicon 
+2. update logo 
+
+------
+2. subroutes - navigation link activate (e.g. prosjekter/[id])
+3. optimise images size & page load 
+4. update pictures 
+5. catch all pages - 404
