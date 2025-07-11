@@ -60,12 +60,21 @@ export const HeroSlide: React.FC<HeroSlideProps> = ({
               background: hideTitleOverlay
                 ? "transparent"
                 : "rgba(32, 1, 0, 0.4)",
-              maxWidth: "60%",
+              maxWidth: "90%",
               minWidth: "516px",
             }}
           />
           <MaxWidthContainer padding="0 16px">
-            <Box maxWidth="500px">{content}</Box>
+            <Box
+            sx={{
+              width: "90%",
+              maxWidth: "1400px",
+              margin: "0 auto",
+              padding: "0 24px",
+            }}
+            >
+              {content}
+              </Box>
           </MaxWidthContainer>
         </Box>
       ) : (

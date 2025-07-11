@@ -1511,6 +1511,11 @@
   resolved "https://registry.npmmirror.com/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-12.1.5.tgz"
   integrity sha512-1eIlZmlO/VRjxxzUBcVosf54AFU3ltAzHi+BJA+9U/lPxCYIsT+R4uO3QksRzRjKWhVQMRjEnlXyyq5SKJm7BA==
 
+"@next/swc-win32-x64-msvc@12.1.5":
+  version "12.1.5"
+  resolved "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-12.1.5.tgz"
+  integrity sha512-/SoXW1Ntpmpw3AXAzfDRaQidnd8kbZ2oSni8u5z0yw6t4RwJvmdZy1eOaAADRThWKV+2oU90++LSnXJIwBRWYQ==
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz"
@@ -1985,9 +1990,9 @@ camelcase@^6.2.0:
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
 caniuse-lite@^1.0.30001283, caniuse-lite@^1.0.30001317:
-  version "1.0.30001332"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001332.tgz"
-  integrity sha512-10T30NYOEQtN6C11YGg411yebhvpnC6Z102+B95eAsN0oB6KUs01ivE8u+G6FMIRtIrVlYXhL+LUwQ3/hXwDWw==
+  version "1.0.30001726"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001726.tgz"
+  integrity sha512-VQAUIUzBiZ/UnlM28fSp2CRF3ivUn1BWEvxMcVTNwpw91Py1pGbPIyIKtd+tzct9C3ouceCVdGAXxZOpZAsgdw==
 
 chalk@^2.0.0:
   version "2.4.2"

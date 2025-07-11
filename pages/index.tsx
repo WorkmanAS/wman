@@ -1,8 +1,10 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { ReactElement } from "react";
+import NewsBar from "../src/components/sections/NewsBar";
 import {
   CallUsBack,
   HeroSlide,
@@ -30,69 +32,66 @@ const Home: NextPageWithLayout = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <HeroSlide
-        image={"/assets/hero1.JPG"}
-        alt="workman - oppbygging, utleie"
-        content={
-          <Box>
-            <Typography
-              fontWeight="bold"
-              lineHeight={"1.2"}
-              fontSize="34px"
-              color={colors.white}
-            >
-              Workman.
-            </Typography>
-            <Typography
-              fontWeight="400"
-              lineHeight={"1.2"}
-              fontSize="34px"
-              color={colors.white}
-            >
-              Utfordrer mulighetene -
-            </Typography>
-            <Typography
-              fontWeight="400"
-              lineHeight={"1.2"}
-              fontSize="28px"
-              color={colors.white}
-            >
-              •Bygg smart
-            </Typography>
-            <Typography
-              fontWeight="400"
-              lineHeight={"1.2"}
-              fontSize="28px"
-              color={colors.white}
-            >
-              •Bygg bærekraftig
-            </Typography>
-            <Typography
-              fontWeight="400"
-              lineHeight={"1.2"}
-              fontSize="28px"
-              color={colors.white}
-            >
-              •Bygg med oss
-            </Typography>
-            <Box height="10px" />
-            <Typography fontSize="16px" color={colors.white}>
-              {TextContent.herotext}
-            </Typography>
+<HeroSlide
+  image={"/assets/hero1.JPG"}
+  alt="workman - oppbygging, utleie"
+  content={
+    <Grid container spacing={4} alignItems="flex-start">
+      {/* Left column: intro text */}
+      <Grid item xs={12} md={8}>
+        <Box>
+          <Typography fontWeight="bold" lineHeight={"1.2"} fontSize="34px" color={colors.white}>
+            Workman.
+          </Typography>
+          <Typography fontWeight="400" lineHeight={"1.2"} fontSize="34px" color={colors.white}>
+            Utfordrer mulighetene:
+          </Typography>
+          <Typography fontWeight="400" lineHeight={"1.2"} fontSize="28px" color={colors.white}>
+            •Bygg smart
+          </Typography>
+          <Typography fontWeight="400" lineHeight={"1.2"} fontSize="28px" color={colors.white}>
+            •Bygg bærekraftig
+          </Typography>
+          <Typography fontWeight="400" lineHeight={"1.2"} fontSize="28px" color={colors.white}>
+            •Bygg med oss
+          </Typography>
+          <Box height="10px" />
+          <Typography fontSize="16px" color={colors.white}>
+            {TextContent.herotext}
+          </Typography>
+          <Box height="60px" />
+          <Button
+            sx={{ minWidth: "200px" }}
+            variant="contained"
+            component={NextLinkComposed}
+            to={"/om-oss"}
+          >
+            Les mer
+          </Button>
+        </Box>
+      </Grid>
 
-            <Box height="60px" />
+      {/* Right column: NewsBar */}
+      <Grid item xs={12} md={4}>
+        <Box
+          sx={{
+            color: colors.white,
+            borderRadius: "12px",
+            padding: "20px",
+            maxWidth: "600px",
+            marginLeft: "auto",
+          }}
+        >
+          <Typography variant="h6" fontWeight="bold" gutterBottom>
+            Siste Nytt
+          </Typography>
+          <NewsBar />
+        </Box>
+      </Grid>
+    </Grid>
+  }
+/>
 
-            <Button
-              sx={{ minWidth: "200px" }}
-              variant="contained"
-              component={NextLinkComposed}
-              to={"/om-oss"}
-            >
-              Les mer
-            </Button>
-          </Box>
-        }
-      />
 
       {/* This is the new white line */}
       <Box
@@ -103,6 +102,16 @@ const Home: NextPageWithLayout = () => {
           margin: "0 auto",  // Centers the line horizontally
           padding: "0",  // Removes extra padding
           width: "80%",  // Adjusts width for responsiveness
+        }}
+      />
+      <Box
+      sx={{
+        height: "10px",
+        backgroundColor: "brown",
+        borderRadius: "1px",
+        margin: "0 auto",
+        padding: "0",
+        width: "80%",
         }}
       />
 
