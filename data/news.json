@@ -1,5 +1,18 @@
 [
   {
+    "id": 1752500507838,
+    "title": "Классный парень",
+    "description": "Классный перень из Workman",
+    "image": "/uploads/c2z4r4ffpzuf28lwp5lmts6h6.JPG",
+    "createdAt": "2025-07-14T13:41:47.838Z"
+  },
+  {
+    "id": 1752237896718,
+    "title": "МАксим обновил фотографию",
+    "description": "Наш дорогой и любимы Максим, обновил фотографию на сайте. чмок чмок\n",
+    "createdAt": "2025-07-11T12:44:56.718Z"
+  },
+  {
     "id": 1752228234765,
     "title": "Test news",
     "description": "There once were two cowboys all alone and in the trail...",

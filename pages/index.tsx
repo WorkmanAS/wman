@@ -43,7 +43,7 @@ const Home: NextPageWithLayout = () => {
           <Typography fontWeight="bold" lineHeight={"1.2"} fontSize="34px" color={colors.white}>
             Workman.
           </Typography>
-          <Typography fontWeight="400" lineHeight={"1.2"} fontSize="34px" color={colors.white}>
+          <Typography fontWeight="400" lineHeight={"1.2"} fontSize="28px" color={colors.white}>
             Utfordrer mulighetene:
           </Typography>
           <Typography fontWeight="400" lineHeight={"1.2"} fontSize="28px" color={colors.white}>
@@ -82,7 +82,7 @@ const Home: NextPageWithLayout = () => {
             marginLeft: "auto",
           }}
         >
-          <Typography variant="h6" fontWeight="bold" gutterBottom>
+          <Typography variant="h5" fontWeight="bold" gutterBottom>
             Siste Nytt
           </Typography>
           <NewsBar />

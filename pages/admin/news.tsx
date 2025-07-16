@@ -4,22 +4,28 @@ export default function AdminNewsPage() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [message, setMessage] = useState('');
+  const [image, setImage] =useState<File | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('description', description);
+    if (image) {
+      formData.append('image', image);
+    }
+
     const res = await fetch('/api/news', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ title, description }),
+      body: formData,
     });
 
     if (res.ok) {
       setMessage('News item posted successfully!');
       setTitle('');
       setDescription('');
+      setImage(null);
     } else {
       setMessage('Error posting news.');
     }
@@ -28,7 +34,7 @@ export default function AdminNewsPage() {
   return (
     <div style={{ maxWidth: '600px', margin: '0 auto', padding: '2rem' }}>
       <h1>Post News</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
         <label>
           Title:
           <input
@@ -49,6 +55,19 @@ export default function AdminNewsPage() {
             style={{ width: '100%', marginBottom: '1rem' }}
           />
         </label>
+
+        <input
+        type="file"
+        name="image"
+        accept="image"
+        onChange={(e) => {
+          const file = e.target.files?.[0];
+          if (file) {
+            setImage(file);
+          }
+        }}
+        />
+
         <button type="submit">Submit</button>
       </form>
       {message && <p>{message}</p>}
