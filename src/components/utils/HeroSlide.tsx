@@ -37,22 +37,7 @@ export const HeroSlide: React.FC<HeroSlideProps> = ({
       minHeight={minHeight}
       padding={dense ? "60px 0" : isDesktop ? "150px 0 124px" : "60px 0"}
     >
-      <Overlay>
-        {image ? (
-          <Image
-            src={image}
-            blurDataURL={image}
-            placeholder="blur"
-            layout="fill"
-            objectFit="cover"
-            alt={alt}
-          />
-        ) : (
-          <MapComponent />
-        )}
-      </Overlay>
-      <Overlay sx={{ background: "rgba(34, 14, 14, 0.61)" }} />
-
+      
       {isDesktop ? (
         <Box position="relative" padding={dense ? "40px" : "80px 0"}>
           <Overlay
@@ -60,7 +45,7 @@ export const HeroSlide: React.FC<HeroSlideProps> = ({
               background: hideTitleOverlay
                 ? "transparent"
                 : "rgba(32, 1, 0, 0.4)",
-              maxWidth: "90%",
+              maxWidth: "95%",
               minWidth: "516px",
             }}
           />

@@ -13,7 +13,13 @@ export const Layout: React.FC = ({ children }) => {
       <Header />
       <Offset />
 
-      <Box>{children}</Box>
+      <Box
+      sx={{
+        backgroundColor: "transparent",
+      }}
+      >
+        {children}
+        </Box>
 
       <Footer />
     </>

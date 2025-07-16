@@ -18,28 +18,61 @@ import TextContent from "../src/content/home";
 import { projects, services } from "../src/data";
 import { useClientSize } from "../src/hooks";
 import { colors } from "../src/styles/colors";
-import { MaxWidthContainer } from "../src/styles/globalStyled";
+import { MaxWidthContainer, Overlay } from "../src/styles/globalStyled";
 import { NextPageWithLayout } from "./_app";
+
 
 const Home: NextPageWithLayout = () => {
   const { isMobile } = useClientSize();
 
   return (
-    <Box position="relative" overflow="hidden">
+    <Box
+    position="relative"
+    overflow="hidden"
+    sx={{
+      backgroundImage: 'url("/assets/hero1.JPG")',
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      minHeight: "100vh",
+    }}
+    >
+            <Overlay
+            sx={{
+              background: "rgba(34, 14, 14, 0.61)",
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              zIndex: 0,
+              }}
+              />
+
       <Head>
         <title>{TextContent.pageTitle}</title>
         <meta name="description" content="Workman AS" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+<Box
+sx={{
+  display: "flex",
+  flexDirection: { xs: "column", md: "row" },
+  position: "realtive",
+  zIndex: 1,
+}}
+>
 
+  <Box
+  sx={{
+    flex: "1 1 auto",
+    minWidth: 0,
+  }}
+  >
 <HeroSlide
-  image={"/assets/hero1.JPG"}
   alt="workman - oppbygging, utleie"
   content={
-    <Grid container spacing={4} alignItems="flex-start">
-      {/* Left column: intro text */}
-      <Grid item xs={12} md={8}>
-        <Box>
+        <Box maxWidth="700px">
           <Typography fontWeight="bold" lineHeight={"1.2"} fontSize="34px" color={colors.white}>
             Workman.
           </Typography>
@@ -69,51 +102,28 @@ const Home: NextPageWithLayout = () => {
             Les mer
           </Button>
         </Box>
-      </Grid>
-
-      {/* Right column: NewsBar */}
-      <Grid item xs={12} md={4}>
-        <Box
-          sx={{
-            color: colors.white,
-            borderRadius: "12px",
-            padding: "20px",
-            maxWidth: "600px",
-            marginLeft: "auto",
-          }}
-        >
-          <Typography variant="h5" fontWeight="bold" gutterBottom>
-            Siste Nytt
-          </Typography>
-          <NewsBar />
-        </Box>
-      </Grid>
-    </Grid>
   }
 />
+</Box>
 
+<Box
+  sx={{
+    width: { xs: "100%", md: "360px" },
+    padding: "20px",
+    backgroundColor: "rgba(0,0,0,0.6)",
+    borderRadius: "12px",
+    color: colors.white,
+    marginTop: { xs: 4, md: 0 },
+    marginLeft: { md: "20px" },
+  }}
+>
+  <Typography variant="h5" fontWeight="bold" gutterBottom>
+    Siste Nytt
+  </Typography>
+  <NewsBar />
+</Box>
+</Box>
 
-      {/* This is the new white line */}
-      <Box
-        sx={{
-          height: "10px",  // Minimal height
-          backgroundColor: "brown",
-          borderRadius: "1px",  // Rounded corners (can remove if not needed)
-          margin: "0 auto",  // Centers the line horizontally
-          padding: "0",  // Removes extra padding
-          width: "80%",  // Adjusts width for responsiveness
-        }}
-      />
-      <Box
-      sx={{
-        height: "10px",
-        backgroundColor: "brown",
-        borderRadius: "1px",
-        margin: "0 auto",
-        padding: "0",
-        width: "80%",
-        }}
-      />
 
       {/* <CallUsBack /> */}
 
