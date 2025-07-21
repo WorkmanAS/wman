@@ -3,6 +3,7 @@ import { Typography } from "@mui/material";
 import { colors } from "../../styles/colors";
 
 export const TypographyLink = styled(Typography)(({}) => ({
+  color: "#000",
   cursor: "pointer",
   transition: "color 0.5s",
   position: "relative",

@@ -69,6 +69,16 @@ const theme = createTheme({
         },
       },
     },
+        MuiCssBaseline: {
+  styleOverrides: {
+    body: {
+      backgroundColor: "transparent",
+    },
+    "body.homepage": {
+      backgroundColor: "transparent",
+    },
+  },
+},
     MuiDialogContent: {
       styleOverrides: {
         root: {
@@ -124,6 +134,7 @@ const theme = createTheme({
       // },
     },
   },
+
 });
 
 export default theme;

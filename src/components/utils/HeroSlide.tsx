@@ -6,6 +6,7 @@ import { useClientSize } from "../../hooks";
 import { NextLinkComposed } from "../navigation";
 import { ArrowBackIos } from "@mui/icons-material";
 import { MapComponent } from "./MapComponent";
+import { useRouter } from "next/router";
 
 interface HeroSlideProps {
   image?: string;
@@ -30,6 +31,8 @@ export const HeroSlide: React.FC<HeroSlideProps> = ({
   hideTitleOverlay,
 }) => {
   const { isDesktop, isMobile, isTablet } = useClientSize();
+  const router = useRouter();
+  const isHome = router.pathname === "/";
 
   return (
     <Box
@@ -37,29 +40,41 @@ export const HeroSlide: React.FC<HeroSlideProps> = ({
       minHeight={minHeight}
       padding={dense ? "60px 0" : isDesktop ? "150px 0 124px" : "60px 0"}
     >
-      
+      {!isHome && (
+      <Overlay>
+        {image ? (
+          <Image
+            src={image}
+            blurDataURL={image}
+            placeholder="blur"
+            layout="fill"
+            objectFit="cover"
+            alt={alt}
+          />
+        ) : (
+          <MapComponent />
+        )}
+      </Overlay>
+      )}
+
+      {/* Conditional overlay only on non-homepages */}
+      {!isHome && (
+        <Overlay sx={{ background: "rgba(34, 14, 14, 0.61)", zIndex: 1 }} />
+      )}
+
       {isDesktop ? (
-        <Box position="relative" padding={dense ? "40px" : "80px 0"}>
+        <Box position="relative" padding={dense ? "40px" : "80px 0"} zIndex={2}>
           <Overlay
             sx={{
               background: hideTitleOverlay
                 ? "transparent"
-                : "rgba(32, 1, 0, 0.4)",
-              maxWidth: "95%",
+                : "rgba(32, 1, 0, 0.51)",
+              maxWidth: "60%",
               minWidth: "516px",
             }}
           />
           <MaxWidthContainer padding="0 16px">
-            <Box
-            sx={{
-              width: "90%",
-              maxWidth: "1400px",
-              margin: "0 auto",
-              padding: "0 24px",
-            }}
-            >
-              {content}
-              </Box>
+            <Box maxWidth="500px">{content}</Box>
           </MaxWidthContainer>
         </Box>
       ) : (

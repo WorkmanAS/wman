@@ -40,7 +40,14 @@ export const Header: React.FC = ({}) => {
 
   return (
     <Box flexGrow={1}>
-      <AppBar position="fixed" color="secondary">
+      <AppBar
+      position="fixed"
+      elevation={0}
+      sx={{
+        backgroundColor: "#fff",
+        zIndex: (theme) => theme.zIndex.drawer + 1,
+      }}
+      >
         <Toolbar>
           <Box
             maxWidth="1200px"

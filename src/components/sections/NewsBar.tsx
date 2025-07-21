@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { colors } from "../../styles/colors";
 import Image from "next/image";
+import { Overlay } from "../../styles/globalStyled";
 
 interface NewsItem {
   id: number;

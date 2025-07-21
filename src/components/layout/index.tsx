@@ -5,7 +5,15 @@ import { Header } from "./Header";
 
 const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
 
-export const Layout: React.FC = ({ children }) => {
+type LayoutProps = {
+  children: React.ReactNode;
+  footerVariant?: "default" | "home";
+};
+
+export const Layout: React.FC<LayoutProps> = ({
+  children,
+footerVariant = "default",
+}) => {
   return (
     <>
       <CssBaseline />
@@ -13,15 +21,11 @@ export const Layout: React.FC = ({ children }) => {
       <Header />
       <Offset />
 
-      <Box
-      sx={{
-        backgroundColor: "transparent",
-      }}
-      >
+      <Box>
         {children}
         </Box>
 
-      <Footer />
+      <Footer variant={footerVariant} />
     </>
   );
 };

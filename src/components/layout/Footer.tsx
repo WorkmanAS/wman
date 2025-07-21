@@ -9,7 +9,11 @@ import { styled } from "@mui/material/styles";
 import { NextLinkComposed } from "../navigation";
 import { LocalPhone, LocationOn, Email } from "@mui/icons-material"; // Import Email icon
 
-export const Footer: React.FC = ({}) => {
+type FooterProps = {
+  variant?: "default" | "home";
+};
+
+export const Footer: React.FC<FooterProps> = ({ variant = "default" }) => {
   const { isDesktop, isMobile } = useClientSize();
 
   const contactsMarkup = (
@@ -111,7 +115,14 @@ export const Footer: React.FC = ({}) => {
   );
 
   return (
-    <Box position="relative">
+    <Box position="relative"
+    sx={{
+      background: variant === "home" ? "transparent" : "unset",
+      zIndex: 1,
+      }}
+      >
+      {variant !== "home" && (
+        <>
       <Overlay>
         <Image
           src="/assets/footer2.JPG"
@@ -123,9 +134,12 @@ export const Footer: React.FC = ({}) => {
         />
       </Overlay>
       <Overlay sx={{ background: "#220E0E", opacity: 0.8 }} />
+      </>
+      )}
       <MaxWidthContainer
         padding={isDesktop ? "40px 16px 60px" : "20px 20px"} // Reduced bottom padding to make page shorter
         position={"relative"}
+        sx={{ background: variant === "home" ? "transparent" : "unset" }}
         {...(!isDesktop && {
           display: "flex",
           flexDirection: "column",
