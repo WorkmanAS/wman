@@ -25,7 +25,6 @@ import SalesIcon from "../src/icons/turnover1.svg";
 import TurnoverIcon from "../src/icons/turnover.svg";
 import EmployeesIcon from "../src/icons/employees.svg";
 import { teamMembers } from "../src/data/teamMembers";
-import { MapComponent } from "../src/components/utils/MapComponent";
 
 const ContactUs: NextPageWithLayout = () => {
   const { isDesktop, isTablet, isMobile } = useClientSize();
@@ -170,15 +169,6 @@ const ContactUs: NextPageWithLayout = () => {
       </MaxWidthContainer>
 
       <Box width="100%" position="relative" margin="60px 0">
-        {isDesktop && (
-          <Box position="absolute" width="100%" height="100%">
-            <Box position="relative" width="100%" height="100%">
-              <Overlay sx={{ background: "rgba(34, 14, 14, 0.5)" }}>
-                <MapComponent />
-              </Overlay>
-            </Box>
-          </Box>
-        )}
 
         {isDesktop ? (
           <MaxWidthContainer
@@ -217,9 +207,6 @@ const ContactUs: NextPageWithLayout = () => {
               <Box maxWidth="65%" margin="auto">
                 {contacts}
               </Box>
-            </Box>
-            <Box position="relative" height="500px" width="100%">
-              <MapComponent />
             </Box>
           </Box>
         )}

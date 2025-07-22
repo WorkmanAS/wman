@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useClientSize } from "../../hooks";
 import { NextLinkComposed } from "../navigation";
 import { ArrowBackIos } from "@mui/icons-material";
-import { MapComponent } from "./MapComponent";
 import { useRouter } from "next/router";
 
 interface HeroSlideProps {
@@ -42,7 +41,7 @@ export const HeroSlide: React.FC<HeroSlideProps> = ({
     >
       {!isHome && (
       <Overlay>
-        {image ? (
+        {image && (
           <Image
             src={image}
             blurDataURL={image}
@@ -51,8 +50,6 @@ export const HeroSlide: React.FC<HeroSlideProps> = ({
             objectFit="cover"
             alt={alt}
           />
-        ) : (
-          <MapComponent />
         )}
       </Overlay>
       )}

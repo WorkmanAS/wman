@@ -143,7 +143,23 @@ const Home: NextPage = () => {
             marginBottom: "24px",
           }}
         >
-          <Typography variant="h5" fontWeight="bold" gutterBottom>Siste Nytt</Typography>
+          <NextLinkComposed to="/nyheter">
+          <Typography
+          variant="h5"
+          fontWeight="bold"
+          gutterBottom
+          sx={{
+            cursor: "pointer",
+            color: colors.white,
+            "&:hover": {
+              textDecoration: "none",
+              opacity: 0.85,
+            },
+          }}
+          >
+            Siste Nytt
+            </Typography>
+            </NextLinkComposed>
           <NewsBar />
         </Box>
       </Box>

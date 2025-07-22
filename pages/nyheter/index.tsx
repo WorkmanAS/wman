@@ -40,7 +40,7 @@ const NewsPage = () => {
 
       <HeroSlide
         dense
-        image={"/assets/projects-hero.jpeg"}
+        image={"/assets/nyheter-hero.jpg"}
         alt="workman - nyheter"
         minHeight="300px"
         hideTitleOverlay
@@ -53,13 +53,7 @@ const NewsPage = () => {
         }
       />
 
-      <MaxWidthContainer
-        padding={isMobile ? "20px 16px" : "20px 16px"}
-        {...(isMobile && { textAlign: "center" })}
-      >
-        <MyBreadCrumbs path={[{ title: "Nyheter", href: "/nyheter" }]} />
         <Box height={isDesktop ? "50px" : "25px"} />
-      </MaxWidthContainer>
 
       <MaxWidthContainer padding={isMobile ? "0px 16px" : "0px 16px"}>
         <Grid container spacing={6}>
@@ -76,12 +70,14 @@ const NewsPage = () => {
               });
 
               return (
-                <Grid item md={6} sm={12} xs={12} key={item.id}>
+                <Grid item xs={12} key={item.id}>
                   <Box>
                     {item.image && (
                       <Box
                         sx={{
                           width: "100%",
+                          maxWidth: "400px",
+                          mx: { xs: "auto", md: 0 },
                           overflow: "hidden",
                           borderRadius: "8px",
                           mb: 2,

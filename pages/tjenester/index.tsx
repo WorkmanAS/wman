@@ -40,7 +40,7 @@ const Services: NextPageWithLayout = () => {
 
       <HeroSlide
         dense
-        image={"/assets/projects-hero.jpeg"}
+        image={"/assets/Construction_city.jpg"}
         alt="workman - oppbygging, utleie"
         minHeight="300px"
         hideTitleOverlay

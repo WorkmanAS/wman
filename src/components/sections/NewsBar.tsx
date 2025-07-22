@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { colors } from "../../styles/colors";
 import Image from "next/image";
 import { Overlay } from "../../styles/globalStyled";
+import Link from "next/link";
 
 interface NewsItem {
   id: number;
@@ -28,6 +29,7 @@ const NewsBar = () => {
         padding: "0px",
         color: colors.white,
         maxWidth: "400px",
+        maxHeight: "800px",
       }}
     >
       <ul style={{ paddingLeft: "1em", margin: 0 }}>
@@ -38,7 +40,7 @@ const NewsBar = () => {
             </Typography>
           </li>
         ) : (
-          news.map((item) => {
+          news.slice(0, 2).map((item) => {
             const formattedDate = new Date(item.createdAt).toLocaleDateString("no-NO", {
               day: "2-digit",
               month: "long",
@@ -85,6 +87,22 @@ const NewsBar = () => {
           })
         )}
       </ul>
+      <Box mt={2} textAlign="left">
+        <Link href="/nyheter" passHref>
+        <Typography
+        component="a"
+        sx={{
+          color: colors.white,
+          textDecoration: "underline",
+          fontSize: "16px",
+          cursor: "pointer",
+          "&:hover": { opacity: 0.85 },
+          }}
+          >
+        Se mer
+        </Typography>
+        </Link>
+      </Box>
     </Box>
   );
 };
