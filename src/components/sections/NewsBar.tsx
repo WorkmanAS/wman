@@ -30,6 +30,20 @@ const NewsBar = () => {
         color: colors.white,
         maxWidth: "400px",
         maxHeight: "800px",
+        overflowY: "auto",
+        pr: "8px",
+        scrollbarWidth: "thin",
+        scrollbarColor: `${colors.red} transparent`,
+        "&::-webkit-scrollbar": {
+          width: "6px",
+        },
+        "&::-webkit-scrollbar-thumb": {
+          backgroundColor: "#888",
+          borderRadius: "4px",
+        },
+        "&::-webkit-scrollbar-thumb:hover": {
+          backgroundColor: "#555",
+        },
       }}
     >
       <ul style={{ paddingLeft: "1em", margin: 0 }}>

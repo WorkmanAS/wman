@@ -1,49 +1,30 @@
 [
   {
-    "id": 1753182609040,
-    "title": "Text",
-    "description": "Her er mange teksten",
-    "image": null,
-    "createdAt": "2025-07-22T11:10:09.040Z"
+    "id": 1753255452093,
+    "title": "Ny kontrakt: Ryensvingen 9 – nye utstillings- og salgslokaler for Polestar og Zeekr",
+    "description": "Vi har sikret oss oppdraget på Ryensvingen 9! Her skal vi innrede nye utstillings- og salgslokaler for bilmerkene Polestar og Zeekr. Kontrakten er signert med Betonmast Romerike AS, og vi setter stor pris på tilliten. Dette er et spennende prosjekt vi virkelig ser frem til å starte opp!",
+    "image": "/uploads/jc6jo15gpznkc472efbwhbdry.png",
+    "createdAt": "2025-07-23T07:24:12.093Z"
   },
   {
-    "id": 1753166283626,
-    "title": "Новостная секция с двума фотографиями",
-    "description": "Протестируем как будет выглядеть новостная секция если у нас 2 последнии фотографии с новостями.",
-    "image": "/uploads/h7ci7guvl03spsvzgfv563uca.JPG",
-    "createdAt": "2025-07-22T06:38:03.626Z"
+    "id": 1753255259348,
+    "title": "Workman har flyttet inn i Construction City",
+    "description": "I juli flyttet vi endelig inn i våre nye lokaler i Construction City – Norges største og mest moderne næringsklynge for bygg-, anlegg- og eiendomsbransjen. Her samles de ledende aktørene i norsk byggenæring under ett tak for å fremme samarbeid og innovasjon. Vi i Workman er stolte og glade for å være en del av dette fellesskapet – og for å kunne jobbe side om side med de beste i bransjen.",
+    "image": "/uploads/akgnp601j6blpxu1mlm00z0jm.jpg",
+    "createdAt": "2025-07-23T07:20:59.348Z"
   },
   {
-    "id": 1753164494743,
-    "title": "Размер новостной ленты",
-    "description": "Давай поймем, насколько большой будет моя лента новостная, если я продолжу добавлять новости. Т.к. надо бы как то ограничить ее размер.",
-    "image": "/uploads/c2kosesjoiewopequunfjx7ip.jpg",
-    "createdAt": "2025-07-22T06:08:14.743Z"
+    "id": 1753337224066,
+    "title": "Nytt prosjekt: Tømrertjenester for Å Camp",
+    "description": "Vi har startet tømrertjenester for Å Camp – et spennende, privat prosjekt vi er stolte av å være en del av. Etter tidligere samarbeid i B2B-markedet, er det ekstra gledelig å videreføre relasjonen med kunden i en ny kontekst. Å Camp tilbyr unike, modulbaserte overnattingsløsninger inspirert av natur og nordisk enkelhet. Vi ser frem til å bidra med vår erfaring og kvalitetshåndverk i utviklingen av dette konseptet.",
+    "image": "/uploads/exzpb6izb56fnojbbcgkdcr0t.jpg",
+    "createdAt": "2025-07-22T06:07:04.066Z"
   },
   {
-    "id": 1753164007975,
-    "title": "Продолжим тестировать новости.",
-    "description": "Смогу ли я добавить новость без добавления фотографии? Сейчас проверим. Т.к. иногда нам надо иметь возможность лишь тезисно написать новость, без фотографии.",
-    "image": null,
-    "createdAt": "2025-07-22T06:00:07.975Z"
-  },
-  {
-    "id": 1752500507838,
-    "title": "Классный парень",
-    "description": "Классный перень из Workman",
-    "image": "/uploads/c2z4r4ffpzuf28lwp5lmts6h6.JPG",
-    "createdAt": "2025-07-14T13:41:47.838Z"
-  },
-  {
-    "id": 1752237896718,
-    "title": "Максим обновил фотографию",
-    "description": "Наш дорогой и любимый Максим, обновил фотографию на сайте. чмок чмок\n",
-    "createdAt": "2025-07-11T12:44:56.718Z"
-  },
-  {
-    "id": 1752228234765,
-    "title": "Test news",
-    "description": "There once were two cowboys all alone and in the trail...",
-    "createdAt": "2025-07-11T10:03:54.765Z"
+    "id": 1753336757341,
+    "title": "Oppstart av tømrerarbeider på Vestskogen, Jessheim – Byggetrinn 4",
+    "description": "Vi er i gang med tømrertjenester på Vestskogen-prosjektet i Jessheim! Dette inngår i et større boligprosjekt bestående av fem bygg med totalt 314 leiligheter. Byggene over parkeringskjelleren monteres med prefabrikkerte moduler direkte på byggeplass. Vi ser frem til å bidra i dette spennende prosjektet midt i hjertet av Jessheim!",
+    "image": "/uploads/xbccz3mbxllnvlag9im1ueqby.png",
+    "createdAt": "2025-07-21T05:59:17.341Z"
   }
 ]
