@@ -1,0 +1,79 @@
+[
+  {
+    "id": 5,
+    "name": "Magomed Gakajev",
+    "title": "Daglig leder",
+    "phone": "+47 992 99 245",
+    "email": "magomed@wman.no",
+    "image": "/assets/team_png/magomed.png"
+  },
+  {
+    "id": 1,
+    "name": "Jean Stephansen",
+    "title": "HR og org. utvikler",
+    "phone": "+47 909 11 466",
+    "email": "jean@wman.no",
+    "image": "/assets/team_png/jean.png"
+  },
+  {
+    "id": 2,
+    "name": "Sergiu Ionascu",
+    "title": "Prosjektleder, avd. bygg",
+    "phone": "+47 906 44 098",
+    "email": "sergiu@wman.no",
+    "image": "/assets/team_png/sergiu.png"
+  },
+  {
+    "id": 3,
+    "name": "Vladislav Vickun",
+    "title": "Formann, avd. bygg",
+    "phone": "+47 462 38 443",
+    "email": "vladislav@wman.no",
+    "image": "/assets/team_png/vlad.png",
+    "order": 6
+  },
+  {
+    "id": 4,
+    "name": "Evgheni Stoianov",
+    "title": "Arbeidsleder, lager / transport",
+    "phone": "+47 939 73 804",
+    "email": "evgheni@wman.no",
+    "image": "/assets/team_png/evgheni.png",
+    "order": 5
+  },
+  {
+    "id": 8,
+    "name": "Edvard Nilsen",
+    "title": "Prosjektleder, avd. riving",
+    "phone": "+47 476 40 770",
+    "email": "edvard@wman.no",
+    "image": "/assets/team_png/edvard.png"
+  },
+  {
+    "id": 9,
+    "name": "Mikael Romali",
+    "title": "HR og personal ansvar",
+    "phone": "+47 451 41 345",
+    "email": "mikael@wman.no",
+    "image": "/assets/team_png/mikael.png",
+    "order": 3
+  },
+  {
+    "id": 11,
+    "name": "Maksim Tsvetkov",
+    "title": "Kalkulatør, avd. bygg | Bygningsingeniør",
+    "phone": "+47 973 47 944",
+    "email": "maksim@wman.no",
+    "image": "/assets/team_png/maksim.png",
+    "order": 4
+  },
+  {
+    "id": 12,
+    "name": "Ivan Ivanov",
+    "title": "Avdelingsleder",
+    "phone": "+47 90 14 53 84",
+    "email": "ivan@wman.no",
+    "image": "/assets/team/01012010382-1757082985571.jpg",
+    "order": 7
+  }
+]
