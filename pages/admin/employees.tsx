@@ -3,7 +3,7 @@ import { GetServerSideProps } from "next";
 import basicAuth from "../../src/lib/basicAuth"; // ✅ uses your existing Basic Auth
 import React, { useEffect, useMemo, useState, useRef } from "react";
 import {
-  Box, Button, Dialog, DialogActions, DialogContent, DialogTitle,
+  Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Tooltip,
   Grid, Stack, TextField, Typography, IconButton, Card, CardContent, Avatar, Chip
 } from "@mui/material";
 import { FiEdit2, FiTrash2, FiUserPlus, FiArrowUp, FiArrowDown } from "react-icons/fi";
@@ -12,6 +12,7 @@ const FiTrash2Icon = FiTrash2 as React.ComponentType<{ size?: number; style?: Re
 const FiUserPlusIcon = FiUserPlus as React.ComponentType<{ size?: number; style?: React.CSSProperties }>;
 const FiArrowUpIcon = FiArrowUp as React.ComponentType<{ size?: number; style?: React.CSSProperties }>;
 const FiArrowDownIcon = FiArrowDown as React.ComponentType<{ size?: number; style?: React.CSSProperties }>;
+
 
 
 type Employee = {
@@ -31,6 +32,15 @@ export default function ManageEmployees() {
   const [editing, setEditing] = useState<Employee | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [uploading, setUploading] = useState(false);
+  const [movingId, setMovingId] = useState<number | null>(null);
+
+  const sortByOrder = (arr: Employee[]): Employee[] =>
+  [...arr].sort((a, b) => {
+    const ao = a.order ?? 1e9;
+    const bo = b.order ?? 1e9;
+    if (ao !== bo) return ao - bo;
+    return (a.id ?? 0) - (b.id ?? 0);
+  });
 
   // Default empty form (memoized so it doesn’t recreate on every render)
   const emptyForm: Omit<Employee, "id"> = useMemo(
@@ -151,39 +161,90 @@ export default function ManageEmployees() {
     });
   }
 
-  async function moveUp(id: number) {
-    const list = [...items].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
-    const idx = list.findIndex(e => e.id === id);
-    if (idx <= 0) return; // already at top or not found
-    const current = list[idx];
-    const prev = list[idx - 1];
-    const a = current.order ?? idx;
-    const b = prev.order ?? (idx - 1);
-    // swap
-    current.order = b;
-    prev.order = a;
-    await updateEmployee(prev);
-    await updateEmployee(current);
-    await load();
+async function patchEmployees(body: any) {
+  try {
+    const res = await fetch("/api/employees", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      cache: "no-store",
+      body: JSON.stringify(body),
+    });
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(`PATCH ${body.action} failed (${res.status}): ${text}`);
+    }
+    return await res.json().catch(() => null);
+  } catch (err) {
+    console.error(err);
+    throw err;
   }
+}
 
-  async function moveDown(id: number) {
-    const list = [...items].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
-    const idx = list.findIndex(e => e.id === id);
-    if (idx === -1 || idx >= list.length -1) return; // bottom or not found
-    const current = list[idx];
-    const next = list[idx + 1];
-    const a = current.order ?? idx;
-    const b = next.order ?? (idx + 1);
-    //swap
-    current.order = b;
-    next.order = a;
-    await updateEmployee(next);
-    await updateEmployee(current);
-    await load();
+async function reorderToIndex(id: number, toIndex: number) {
+  setMovingId(id);
+  try {
+    // 1) Preferred: server reindex
+    await patchEmployees({ action: "reorder", id, toIndex });
+  } catch (e1) {
+    // 2) Fallback: neighbor move (up/down) on server
+    try {
+      const list = sortByOrder(items);
+      const fromIndex = list.findIndex((e) => e.id === id);
+      if (fromIndex < 0) return;
+
+      const dir = toIndex < fromIndex ? "up" : "down";
+      await patchEmployees({ action: "move", id, direction: dir });
+    } catch (e2) {
+      // 3) Last resort: local swap + two PUTs (old behavior)
+      try {
+        const list = sortByOrder(items);
+        const fromIndex = list.findIndex((e) => e.id === id);
+        if (fromIndex < 0 || fromIndex === toIndex) return;
+
+        // remove + insert
+        const copy = [...list];
+        const [item] = copy.splice(fromIndex, 1);
+        copy.splice(toIndex, 0, item);
+
+        // reindex sequentially and persist each changed row
+        for (let i = 0; i < copy.length; i++) {
+          const emp = copy[i];
+          if (emp.order !== i) {
+            await fetch(`/api/employees?id=${emp.id}`, {
+              method: "PUT",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ ...emp, order: i }),
+            });
+          }
+        }
+      } catch (e3) {
+        alert("Reorder failed. See console for details.");
+        console.error("Fallback PUT sequence also failed:", e3);
+      }
+    }
+  } finally {
+    setMovingId(null);
   }
+  await load();
+}
 
-  const sorted = [...items].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+async function moveUp(id: number) {
+  const list = sortByOrder(items);
+  const idx = list.findIndex((e) => e.id === id);
+  if (idx <= 0) return;
+  await reorderToIndex(id, idx - 1);
+}
+
+async function moveDown(id: number) {
+  const list = sortByOrder(items);
+  const idx = list.findIndex((e) => e.id === id);
+  if (idx === -1 || idx >= list.length - 1) return;
+  await reorderToIndex(id, idx + 1);
+}
+
+
+
+  const sorted = React.useMemo(() => sortByOrder(items), [items]);
   return (
     <Box minHeight="100vh" bgcolor="#f3f4f6" py={6} px={2}>
       <Box maxWidth="lg" mx="auto">
@@ -206,26 +267,57 @@ export default function ManageEmployees() {
                       <Avatar
                         src={e.image || undefined}
                         alt={e.name}
-                        sx={{ width: 56, height: 56 }}
+                        sx={{ width: 56, height: 56, flexShrink: 0 }}
                       />
-                      <Box>
-                        <Typography fontWeight="bold">{e.name}</Typography>
+                      <Box sx={{ flex: "1 1 auto", minWidth: 0 }}>
+                        <Typography fontWeight="bold" noWrap>{e.name}</Typography>
                         {e.title ? (
+                          <Tooltip title={e.title}>
                             <Chip
                             label={e.title}
                             size="small"
                             variant="outlined"
-                            sx={{ mt: 0.5 }}
-                            />
+                            sx={{
+                              mt: 0.5,
+                            maxWidth: "100%",
+                          ".MuiChip-label": {
+                            display: "block",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                            whiteSpace: "nowrap",
+                          },
+                        }}
+                        />
+                            </Tooltip>
                         ) : null}
-                        {e.phone ? <Typography variant="body2">{e.phone}</Typography> : null}
-                        {e.email ? <Typography variant="body2">{e.email}</Typography> : null}
+
+                        {e.phone ? (
+                          <Typography variant="body2" noWrap>
+                            {e.phone}
+                            </Typography>
+                            ) : null}
+                        {e.email ? (
+                          <Typography variant="body2" noWrap>
+                            {e.email}
+                            </Typography>
+                            ) : null}
                       </Box>
-                      <Box sx={{ ml: "auto", display: "flex", gap: 0.5 }}>
-                        <IconButton onClick={() => moveUp(e.id)} aria-label="move up" title="Move up">
+
+                      <Box sx={{ ml: 1, display: "flex", gap: 0.5, flexShrink: 0 }}>
+                        <IconButton
+                        onClick={() => moveUp(e.id)}
+                        aria-label="move up"
+                        title="Move up"
+                        disabled={loading || movingId === e.id}
+                        >
                             <FiArrowUpIcon size={18} />
                         </IconButton>
-                        <IconButton onClick={() => moveDown(e.id)} aria-label="move down" title="Move down">
+                        <IconButton
+                        onClick={() => moveDown(e.id)}
+                        aria-label="move down"
+                        title="Move down"
+                        disabled={loading || movingId === e.id}
+                        >
                             <FiArrowDownIcon size={18} />
                         </IconButton>
                         <IconButton onClick={() => openEdit(e)} aria-label="edit" title="Edit">

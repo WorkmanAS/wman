@@ -36,7 +36,7 @@ export const TeamMember: React.FC<TeamMemberProps> = ({ member }) => {
             placeholder="blur"
             layout="fill"
             objectFit="cover"
-            alt={member.pic}
+            alt={member.name}
           />
         </Overlay>
         <Overlay
@@ -75,7 +75,7 @@ export const TeamMember: React.FC<TeamMemberProps> = ({ member }) => {
           }}
         />
         <Box>
-          <a href={`callto:${member.phone}`}>
+          <a href={`tel:${member.phone}`}>
             <Typography position="relative" fontWeight={400} fontSize="18px">
               {member.phone}
             </Typography>

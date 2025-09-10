@@ -1,44 +1,62 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
-import type { NextPage } from "next";
+// pages/kontakt.tsx
+import { Box, Grid, Typography } from "@mui/material";
 import Head from "next/head";
-import Image from "next/image";
 import { ReactElement } from "react";
 import {
-  CallUsBack,
   HeroSlide,
   Layout,
   MyBreadCrumbs,
-  NextLinkComposed,
-  ProjectCard,
   RequestForm,
   SectionTitle,
-  ShortServiceCard,
   TeamMember,
 } from "../src/components";
 import TextContent from "../src/content/home";
-import { projects, services } from "../src/data";
 import { useClientSize } from "../src/hooks";
 import { colors } from "../src/styles/colors";
 import { MaxWidthContainer, Overlay } from "../src/styles/globalStyled";
 import { NextPageWithLayout } from "./_app";
-import SalesIcon from "../src/icons/turnover1.svg";
-import TurnoverIcon from "../src/icons/turnover.svg";
-import EmployeesIcon from "../src/icons/employees.svg";
-import { teamMembers } from "../src/data/teamMembers";
+import fs from "fs/promises";
+import path from "path";
 
-const ContactUs: NextPageWithLayout = () => {
-  const { isDesktop, isTablet, isMobile } = useClientSize();
+type Employee = {
+  id: number;
+  name: string;
+  title: string;
+  phone?: string;
+  email?: string;
+  image?: string;
+  order?: number;
+};
+
+type Props = {
+  employees: Employee[];
+};
+
+const ContactUs: NextPageWithLayout<Props> = ({ employees }) => {
+  const { isDesktop, isMobile } = useClientSize();
+
+  const normalizedMembers = employees.map((e) => {
+    const src =
+    e.image && e.image.trim().length > 0
+    ? e.image
+    : "/assets/team_png/magomed.png";
+
+    return {
+      id: e.id,
+      name: e.name,
+      position: e.title,
+      phone: e.phone,
+      email: e.email,
+
+      pic: src,
+
+      title: e.title,
+    };
+  });
 
   const contacts = (
-    <Box
-      position="relative"
-      padding={isDesktop ? "50px" : "50px 20px 50px 20px"}
-    >
-      <Typography
-        fontSize="36px"
-        color="white"
-        {...(!isDesktop && { textAlign: "center" })}
-      >
+    <Box position="relative" padding={isDesktop ? "50px" : "50px 20px 50px 20px"}>
+      <Typography fontSize="36px" color="white" {...(!isDesktop && { textAlign: "center" })}>
         Workman AS
       </Typography>
       <Box height="30px" />
@@ -49,7 +67,7 @@ const ContactUs: NextPageWithLayout = () => {
           </Typography>
         </Grid>
         <Grid item md={9} sm={7} xs={6}>
-          <a href={`callto:+4745141345`}>
+          <a href="tel:+4745141345">
             <Typography color="white" fontSize="16px" fontWeight={400}>
               +47 45 14 13 45
             </Typography>
@@ -63,7 +81,7 @@ const ContactUs: NextPageWithLayout = () => {
           <br />
         </Grid>
         <Grid item md={9} sm={7} xs={6}>
-          <a href={`malto:post@wman.no`}>
+          <a href="mailto:post@wman.no">
             <Typography color="white" fontSize="16px" fontWeight={400}>
               post@wman.no
             </Typography>
@@ -142,68 +160,55 @@ const ContactUs: NextPageWithLayout = () => {
         }
       />
 
-      <MaxWidthContainer
-        padding={isMobile ? "20px 16px" : "20px 16px"}
-        {...(isMobile && { textAlign: "center" })}
-      >
+      <MaxWidthContainer padding={isMobile ? "20px 16px" : "20px 16px"} {...(isMobile && { textAlign: "center" })}>
         <MyBreadCrumbs path={[{ title: "Kontakt oss", href: "/kontakt" }]} />
         <Box height={"25px"} />
         <SectionTitle title={"Kontaktpersoner"} />
         <Box height="30px" />
 
         <Grid container spacing={4}>
-          {teamMembers.map((member) => (
-            <Grid
-              display="flex"
-              justifyContent={"center"}
-              item
-              md={3}
-              sm={4}
-              xs={12}
-              key={member.id}
-            >
-              <TeamMember member={member} />
+          {normalizedMembers.map((member) => (
+            <Grid display="flex" justifyContent="center" item md={3} sm={4} xs={12} key={member.id}>
+              <TeamMember member={member as any} />
             </Grid>
           ))}
         </Grid>
       </MaxWidthContainer>
 
       <Box width="100%" position="relative" margin="60px 0">
-
         {isDesktop ? (
-          <MaxWidthContainer
-            padding={"0"}
-            {...(isMobile && { textAlign: "center" })}
-          >
+          <MaxWidthContainer padding={"0"} {...(isMobile && { textAlign: "center" })}>
             <Box position="relative" width="700px">
-              <Overlay sx={{ background: "#220E0E" }}></Overlay>
-              <Overlay sx={{ opacity: 0.1 }}>
-                <Image
-                  src={"/assets/contact-us.jpg"}
-                  blurDataURL={"/assets/contact-us.jpg"}
-                  placeholder="blur"
-                  objectFit="cover"
-                  layout="fill"
-		  alt="kontakt us"
-                />
-              </Overlay>
+              <Overlay sx={{ background: "#220E0E" }} />
+              <Box
+              sx={{
+                position: "absolute",
+                inset: 0,
+                backgroundImage: 'url("/assets/contact-us.jpg")',
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                opacity: 0.1,
+              }}
+              />
+
               {contacts}
             </Box>
           </MaxWidthContainer>
         ) : (
           <Box>
             <Box position="relative" width="100%">
-              <Overlay sx={{ background: "#220E0E" }}></Overlay>
-              <Overlay sx={{ opacity: 0.1 }}>
-                <Image
-                  src={"/assets/contact-us.jpg"}
-                  blurDataURL={"/assets/contact-us.jpg"}
-                  placeholder="blur"
-                  objectFit="cover"
-                  layout="fill"
-		  alt="kontakt oss"
-                />
-              </Overlay>
+              <Overlay sx={{ background: "#220E0E" }} />
+              <Box
+              sx={{
+                position: "absolute",
+                inset: 0,
+                backgroundImage: 'url("/assets/contact-us.jpg")',
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                opacity: 0.1,
+              }}
+              />
+
               <Box maxWidth="65%" margin="auto">
                 {contacts}
               </Box>
@@ -216,7 +221,6 @@ const ContactUs: NextPageWithLayout = () => {
         <SectionTitle title="Forespørsel" />
         <Box height="30px" />
         <RequestForm />
-
         <Box height="50px" />
       </MaxWidthContainer>
     </Box>
@@ -228,3 +232,19 @@ ContactUs.getLayout = function getLayout(page: ReactElement) {
 };
 
 export default ContactUs;
+
+// --- Server-side data (reads the same JSON the admin UI writes) ---
+export async function getStaticProps() {
+  try {
+    const dataDir = path.join(process.cwd(), "data");
+    const file = await fs.readFile(path.join(dataDir, "employees.json"), "utf8");
+    const raw: Employee[] = JSON.parse(file);
+
+    const employees = raw.slice().sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+
+    return { props: { employees }, revalidate: 60 }; // ISR: refresh up to once per minute
+  } catch {
+    // Fail-safe: page still builds, just with an empty list
+    return { props: { employees: [] }, revalidate: 60 };
+  }
+}
