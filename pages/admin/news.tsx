@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import { GetServerSideProps } from 'next';
+import basicAuth from '../../src/lib/basicAuth';
+import { AdminNav } from '../../src/components/admin/AdminNav';
 
 type NewsItem = {
   id: number;
@@ -117,6 +120,8 @@ export default function AdminNewsPage() {
 
   return (
     <>
+    <AdminNav />
+    
     <div style={{ maxWidth: '600px', margin: '0 auto', padding: '2rem' }}>
       <h1>Post News</h1>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
@@ -186,9 +191,6 @@ export default function AdminNewsPage() {
     </>
   );
 }
-
-import { GetServerSideProps } from 'next';
-import basicAuth from '../../src/lib/basicAuth';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const { req, res } = context;

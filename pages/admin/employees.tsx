@@ -7,6 +7,8 @@ import {
   Grid, Stack, TextField, Typography, IconButton, Card, CardContent, Avatar, Chip
 } from "@mui/material";
 import { FiEdit2, FiTrash2, FiUserPlus, FiArrowUp, FiArrowDown } from "react-icons/fi";
+import { AdminNav } from "../../src/components/admin/AdminNav";
+
 const FiEdit2Icon = FiEdit2 as React.ComponentType<{ size?: number; style?: React.CSSProperties }>;
 const FiTrash2Icon = FiTrash2 as React.ComponentType<{ size?: number; style?: React.CSSProperties }>;
 const FiUserPlusIcon = FiUserPlus as React.ComponentType<{ size?: number; style?: React.CSSProperties }>;
@@ -162,6 +164,7 @@ export default function ManageEmployees() {
   }
 
 async function patchEmployees(body: any) {
+  // try PATCH first
   try {
     const res = await fetch("/api/employees", {
       method: "PATCH",
@@ -169,16 +172,31 @@ async function patchEmployees(body: any) {
       cache: "no-store",
       body: JSON.stringify(body),
     });
-    if (!res.ok) {
+    if (res.ok) return await res.json().catch(() => null);
+    // if PATCH not allowed (405/501/etc), fall through to POST retry
+    if (![405, 501].includes(res.status)) {
       const text = await res.text();
       throw new Error(`PATCH ${body.action} failed (${res.status}): ${text}`);
     }
-    return await res.json().catch(() => null);
-  } catch (err) {
-    console.error(err);
-    throw err;
+  } catch (_ignore) {
+    // will retry with POST below
   }
+
+  // retry with POST ?action=...
+  const params = new URLSearchParams({ action: String(body.action || "") });
+  const res2 = await fetch(`/api/employees?${params.toString()}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    cache: "no-store",
+    body: JSON.stringify(body),
+  });
+  if (!res2.ok) {
+    const text = await res2.text();
+    throw new Error(`POST ${body.action} failed (${res2.status}): ${text}`);
+  }
+  return await res2.json().catch(() => null);
 }
+
 
 async function reorderToIndex(id: number, toIndex: number) {
   setMovingId(id);
@@ -248,6 +266,8 @@ async function moveDown(id: number) {
   return (
     <Box minHeight="100vh" bgcolor="#f3f4f6" py={6} px={2}>
       <Box maxWidth="lg" mx="auto">
+        <AdminNav />
+        
         <Stack direction="row" justifyContent="space-between" alignItems="center" mb={2}>
           <Typography variant="h4" fontWeight="bold">Manage Employees</Typography>
           <Button variant="contained" startIcon={<FiUserPlusIcon size={18} />} onClick={openCreate}>

@@ -8,6 +8,7 @@ import {
   Card, CardContent, CardMedia
 } from "@mui/material";
 import { FiEdit2, FiTrash2, FiPlus, FiArrowUp, FiArrowDown, FiImage } from "react-icons/fi";
+import { AdminNav } from "../../src/components/admin/AdminNav";
 
 const PlusIcon: any = FiPlus;
 const EditIcon: any = FiEdit2;
@@ -154,6 +155,8 @@ export default function AdminProjects() {
 
   return (
     <Box p={3}>
+      <AdminNav />
+      
       <Box display="flex" alignItems="center" justifyContent="space-between" mb={2}>
         <Typography variant="h5" fontWeight="bold">
           Manage Projects

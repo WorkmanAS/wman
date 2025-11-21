@@ -6,6 +6,7 @@ import { Box, Typography, Stack, ButtonBase } from '@mui/material';
 import type { IconType } from 'react-icons';
 import { FiPlusCircle, FiFolderPlus, FiUser } from 'react-icons/fi';
 import React from 'react';
+import { AdminNav } from '../../src/components/admin/AdminNav';
 
 const FiPlusCircleIcon = FiPlusCircle as React.ComponentType<{ size?: number; style?: React.CSSProperties }>;
 const FiFolderPlusIcon = FiFolderPlus as React.ComponentType<{ size?: number; style?: React.CSSProperties }>;
@@ -49,6 +50,7 @@ const cards: CardItem[] = [
   return (
     <Box minHeight="100vh" bgcolor="#f3f4f6" py={6} px={2}>
       <Box maxWidth="md" mx="auto">
+        <AdminNav />
         <Typography variant="h4" fontWeight="bold" color="text.primary" gutterBottom>
           Admin Dashboard
         </Typography>
