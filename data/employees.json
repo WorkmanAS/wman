@@ -18,21 +18,21 @@
     "order": 1
   },
   {
-    "id": 2,
-    "name": "Sergiu Ionascu",
-    "title": "Prosjektleder, avd. bygg",
-    "phone": "+47 906 44 098",
-    "email": "sergiu@wman.no",
-    "image": "/assets/team_png/sergiu.png",
-    "order": 2
-  },
-  {
     "id": 11,
     "name": "Maksim Tsvetkov",
     "title": "Kalkulatør, avd. bygg | Bygningsingeniør",
     "phone": "+47 973 47 944",
     "email": "maksim@wman.no",
     "image": "/assets/team_png/maksim.png",
+    "order": 2
+  },
+  {
+    "id": 2,
+    "name": "Sergiu Ionascu",
+    "title": "Prosjektleder, avd. bygg",
+    "phone": "+47 906 44 098",
+    "email": "sergiu@wman.no",
+    "image": "/assets/team_png/sergiu.png",
     "order": 3
   },
   {
@@ -45,30 +45,12 @@
     "order": 4
   },
   {
-    "id": 8,
-    "name": "Edvard Nilsen",
-    "title": "Prosjektleder, avd. riving",
-    "phone": "+47 476 40 770",
-    "email": "edvard@wman.no",
-    "image": "/assets/team_png/edvard.png",
-    "order": 5
-  },
-  {
-    "id": 9,
-    "name": "Mikael Romali",
-    "title": "HR og personal ansvar",
-    "phone": "+47 451 41 345",
-    "email": "mikael@wman.no",
-    "image": "/assets/team_png/mikael.png",
-    "order": 6
-  },
-  {
     "id": 3,
     "name": "Vladislav Vickun",
     "title": "Formann, avd. bygg",
     "phone": "+47 462 38 443",
     "email": "vladislav@wman.no",
     "image": "/assets/team_png/vlad.png",
-    "order": 7
+    "order": 5
   }
 ]

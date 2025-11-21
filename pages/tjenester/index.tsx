@@ -1,34 +1,21 @@
 import { Box, Grid, Typography } from "@mui/material";
 import Head from "next/head";
-import { ReactElement, useState } from "react";
+import { ReactElement } from "react";
 import {
   HeroSlide,
   Layout,
   MyBreadCrumbs,
-  ProjectCard,
-  ProjectFilters,
-  SectionTitle,
   ServiceCard,
-  TeamMember,
 } from "../../src/components";
 import TextContent from "../../src/content/home";
-import { extraService, projects, services } from "../../src/data";
-import { teamMembers } from "../../src/data/teamMembers";
+import { extraService, services } from "../../src/data/services";
 import { useClientSize } from "../../src/hooks";
-import { ServiceType } from "../../src/lib/types";
 import { colors } from "../../src/styles/colors";
 import { MaxWidthContainer } from "../../src/styles/globalStyled";
 import { NextPageWithLayout } from "../_app";
 
 const Services: NextPageWithLayout = () => {
-  const { isDesktop, isMobile } = useClientSize();
-  const [activeFilter, setActiveFilter] = useState<ServiceType | "Alle">(
-    "Alle"
-  );
-
-  const currentProjects = projects.filter((p) =>
-    activeFilter === "Alle" ? p : p.type === activeFilter
-  );
+  const { isMobile } = useClientSize();
 
   return (
     <Box position="relative" overflow="hidden">
@@ -96,63 +83,6 @@ const Services: NextPageWithLayout = () => {
       </MaxWidthContainer>
 
       <Box height={"70px"} />
-
-      {/* 
-      <MaxWidthContainer
-        padding={isMobile ? "20px 16px" : "20px 16px"}
-        {...(isMobile && { textAlign: "center" })}
-      >
-        <SectionTitle title={"Kontaktpersoner"} />
-        <Box height="30px" />
-
-        <Grid container spacing={4}>
-          {teamMembers.map((member) => (
-            <Grid
-              display="flex"
-              justifyContent={"center"}
-              item
-              md={3}
-              sm={4}
-              xs={12}
-              key={member.id}
-            >
-              <TeamMember member={member} />
-            </Grid>
-          ))}
-        </Grid>
-      </MaxWidthContainer>
-
-      <Box height={isMobile ? "30px" : "70px"} />
-
-      <MaxWidthContainer
-        padding={isMobile ? "20px 16px" : "20px 16px"}
-        {...(isMobile && { textAlign: "center" })}
-      >
-        <SectionTitle title={"Referanser"} />
-        <Typography fontSize="16px">
-          {TextContent.referancesSubtitle}
-        </Typography>
-        <Box height="30px" />
-
-        <Box>
-          <ProjectFilters
-            activeFilter={activeFilter}
-            setActiveFilter={setActiveFilter}
-          />
-
-          <Box height="50px" />
-
-          <Grid container spacing={4}>
-            {currentProjects.map((project) => (
-              <Grid item md={3} xs={12} sm={4} key={project.id}>
-                <ProjectCard project={project} />
-              </Grid>
-            ))}
-          </Grid>
-
-          <Box height="100px" />
-        </Box>
-      </MaxWidthContainer> */}
     </Box>
   );
 };

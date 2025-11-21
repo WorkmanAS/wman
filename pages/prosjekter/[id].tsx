@@ -1,7 +1,7 @@
 import { Box, Grid, Typography } from "@mui/material";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { ReactElement, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   BoldTitle,
   HeroSlide,
@@ -12,23 +12,88 @@ import {
 } from "../../src/components";
 import { FullscreenLoader } from "../../src/components/layout/FullscreenLoader";
 import TextContent from "../../src/content/home";
-import { projects } from "../../src/data";
 import { useClientSize } from "../../src/hooks";
-import { ServiceType } from "../../src/lib/types";
+import { IProject, ServiceType } from "../../src/lib/types";
 import { colors } from "../../src/styles/colors";
 import { MaxWidthContainer, Overlay } from "../../src/styles/globalStyled";
 import { NextPageWithLayout } from "../_app";
 import Image from "next/image";
 
+type ApiProject = {
+  id: string;
+  title: string;
+  shortDescription?: string;
+  description?: string;
+  address?: string;
+  customer?: string;
+  type: "Bygginredning" | "Entreprenør" | "Renovering" | "Serviceoppdrag";
+  slug: string;
+  cover?: string;
+  middlePic?: string;
+  afterPicDiscription?: string;
+  pictures: string[];
+  order: number;
+  createdAt: string;
+  updatedAt: string;
+  published: boolean;
+};
+
+const apiTypeToServiceType: Record<ApiProject["type"], ServiceType> = {
+  Bygginredning: ServiceType.BYGGINREDNING,
+  Entreprenør: ServiceType.ENTREPRENØR,
+  Renovering: ServiceType.RENOVERING,
+  Serviceoppdrag: ServiceType.SERVICEOPPDRAG,
+};
+
+function mapApiToProject(p: ApiProject): IProject {
+  return {
+    id: p.id,
+    type: apiTypeToServiceType[p.type],
+    title: p.title,
+    isFavorite: false,
+    homeDescription: p.shortDescription || p.customer || "",
+    address: p.address || "",
+    description: p.description || "",
+    shortDescription: p.shortDescription || "",
+    afterPicDiscription: p.afterPicDiscription || "",
+    customer: p.customer || "",
+    hero: p.cover || p.middlePic || p.pictures[0] || "/assets/projects-hero.jpg",
+    middlePic: p.middlePic || p.cover || p.pictures[0] || "",
+    pictures: p.pictures || [],
+  };
+}
+
+
 const Project: NextPageWithLayout = () => {
   const { isDesktop, isMobile } = useClientSize();
   const router = useRouter();
-  const project =
-    router.isReady && projects.find((p) => p.id === router.query.id);
+  const [project, setProject] = useState<IProject | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  if (!project && router.isReady) router.replace("/404");
+  useEffect(() => {
+    if (!router.isReady) return;
 
-  if (!project) return <FullscreenLoader />;
+    const id = router.query.id;
+    if (!id || typeof id !== "string") return;
+
+    async function load() {
+      try {
+        const res = await fetch(`/api/projects?id=${id}`);
+        if (!res.ok) {
+          router.replace("/404");
+          return;
+        }
+        const data: ApiProject = await res.json();
+        setProject(mapApiToProject(data));
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    load();
+  }, [router]);
+
+  if (loading || !project) return <FullscreenLoader />;
 
   return (
     <Layout>
