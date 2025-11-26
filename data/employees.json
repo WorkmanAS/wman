@@ -11,7 +11,7 @@
   {
     "id": 1,
     "name": "Jean Stephansen",
-    "title": "HR og org. utvikler",
+    "title": "Avdelingsleder Bygg | HR og Organisasjonsutvikling",
     "phone": "+47 909 11 466",
     "email": "jean@wman.no",
     "image": "/assets/team_png/jean.png",
@@ -20,7 +20,7 @@
   {
     "id": 11,
     "name": "Maksim Tsvetkov",
-    "title": "Kalkulatør, avd. bygg | Bygningsingeniør",
+    "title": "Kalkulatør | Bygningsingeniør",
     "phone": "+47 973 47 944",
     "email": "maksim@wman.no",
     "image": "/assets/team_png/maksim.png",
@@ -29,7 +29,7 @@
   {
     "id": 2,
     "name": "Sergiu Ionascu",
-    "title": "Prosjektleder, avd. bygg",
+    "title": "Prosjektleder | Fagligleder lærlinger Bygg",
     "phone": "+47 906 44 098",
     "email": "sergiu@wman.no",
     "image": "/assets/team_png/sergiu.png",
@@ -38,7 +38,7 @@
   {
     "id": 4,
     "name": "Evgheni Stoianov",
-    "title": "Arbeidsleder, lager / transport",
+    "title": "Driftsleder",
     "phone": "+47 939 73 804",
     "email": "evgheni@wman.no",
     "image": "/assets/team_png/evgheni.png",
@@ -47,10 +47,19 @@
   {
     "id": 3,
     "name": "Vladislav Vickun",
-    "title": "Formann, avd. bygg",
+    "title": "Formann og HMS (bygg)",
     "phone": "+47 462 38 443",
     "email": "vladislav@wman.no",
     "image": "/assets/team_png/vlad.png",
     "order": 5
+  },
+  {
+    "id": 12,
+    "name": "Serghei Negruta",
+    "title": "Verneombud, Driftsansvarlig",
+    "phone": "+47 465 83 557",
+    "email": "negruta25122014@gmail.com",
+    "image": "",
+    "order": 6
   }
 ]
