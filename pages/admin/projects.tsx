@@ -108,7 +108,14 @@ export default function AdminProjects() {
   }
 
   async function handleSave() {
-    const body = { ...form, pictures: form.pictures ?? [] };
+    const body = {
+      ...form,
+      // ensure these are always strings (never undefined)
+      description: form.description ?? "",
+      afterPicDiscription: form.afterPicDiscription ?? "",
+      pictures: form.pictures ?? []
+    };
+    
     if (!body.title || !body.type) return alert("Title and Type are required.");
 
     if (editing) {
@@ -244,24 +251,43 @@ export default function AdminProjects() {
       <Dialog open={open} onClose={() => setOpen(false)} maxWidth="md" fullWidth>
         <DialogTitle>{editing ? "Edit Project" : "New Project"}</DialogTitle>
         <DialogContent>
+
           <Stack spacing={2} mt={1}>
+            {/* Title */}
+            <Stack spacing={0.5}>
+            <Typography variant="body2" sx={{ fontWeight: 600 }}>
+              Title
+            </Typography>
             <TextField
-              label="Title"
               value={form.title ?? ""}
               onChange={(e) =>
                 setForm((f) => ({ ...f, title: e.target.value }))
               }
+              placeholder="f.eks.: Stortorvet 7 | Oslo"
             />
+            </Stack>
+
+            {/* Slug */}
+            <Stack spacing={0.5}>
+              <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                Slug
+              </Typography>
             <TextField
-              label="Slug"
               value={form.slug ?? ""}
               onChange={(e) =>
                 setForm((f) => ({ ...f, slug: e.target.value }))
               }
+              placeholder="URL-navn for prosjektet (eks. stortorvet-7-oslo)"
             />
+            </Stack>
+
+            {/* Category */}
+            <Stack spacing={0.5}>
+              <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                Category
+              </Typography>
             <TextField
               select
-              label="Category"
               value={form.type ?? "Bygginredning"}
               onChange={(e) =>
                 setForm((f) => ({ ...f, type: e.target.value as any }))
@@ -273,48 +299,50 @@ export default function AdminProjects() {
                 </MenuItem>
               ))}
             </TextField>
+            </Stack>
+
+            {/* Short Description */}
+            <Stack spacing={0.5}>
+              <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                Short description
+              </Typography>
             <TextField
-              label="Short Description"
               value={form.shortDescription ?? ""}
               onChange={(e) =>
                 setForm((f) => ({ ...f, shortDescription: e.target.value }))
               }
+              placeholder="Kort tekst som vises på prosjektkortet"
             />
+            </Stack>
+
+            {/* Address */}
+            <Stack spacing={0.5}>
+              <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                Address
+              </Typography>
             <TextField
-              label="Address"
               value={form.address ?? ""}
               onChange={(e) =>
                 setForm((f) => ({ ...f, address: e.target.value }))
               }
+              placeholder="Write the project address here"
             />
+            </Stack>
+
+            {/* Customer */}
+            <Stack spacing={0.5}>
+              <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                Customer
+              </Typography>
             <TextField
-              label="Customer"
               value={form.customer ?? ""}
               onChange={(e) =>
                 setForm((f) => ({ ...f, customer: e.target.value }))
               }
+              placeholder="Who is our client? Write here"
             />
-            <TextField
-              label="HTML Description"
-              value={form.description ?? ""}
-              onChange={(e) =>
-                setForm((f) => ({ ...f, description: e.target.value }))
-              }
-              multiline
-              minRows={4}
-            />
-            <TextField
-              label="After-picture HTML text"
-              value={form.afterPicDiscription ?? ""}
-              onChange={(e) =>
-                setForm((f) => ({
-                  ...f,
-                  afterPicDiscription: e.target.value,
-                }))
-              }
-              multiline
-              minRows={2}
-            />
+            </Stack>
+            
             <Stack direction="row" spacing={2} alignItems="center">
               <Button onClick={() => fileCoverRef.current?.click()}>
                 Upload Cover

@@ -360,36 +360,65 @@ async function moveDown(id: number) {
           <DialogTitle>{editing ? "Edit Employee" : "Add Employee"}</DialogTitle>
           <DialogContent>
             <Stack spacing={2} mt={1}>
+              {/* Name */}
+              <Stack spacing={0.5}>
+                <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                Name *
+                </Typography>
               <TextField
-                label="Name *"
-                placeholder="Ivan Ivanov"
+                placeholder="f.eks.: Ivan Ivanov"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
               />
+              </Stack>
+
+              {/* Title */}
+              <Stack spacing={0.5}>
+                <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                  Title *
+                </Typography>
               <TextField
-                label="Title *"
-                placeholder="Prosjektleder eller Avdelingsleder"
+                placeholder="f.eks.: Prosjektleder eller Avdelingsleder"
                 value={form.title}
                 onChange={(e) => setForm({ ...form, title: e.target.value })}
               />
+              </Stack>
+
+              {/* Phone */}
+              <Stack spacing={0.5}>
+                <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                  Phone
+                </Typography>
               <TextField
-                label="Phone"
                 placeholder="+47 909 ... ..."
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
               />
+              </Stack>
+
+              {/* Email */}
+              <Stack spacing={0.5}>
+                <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                  Email
+                </Typography>
               <TextField
-                label="Email"
                 placeholder="ivan@wman.no"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
               />
+              </Stack>
+
+              {/* Image path */}
+              <Stack spacing={0.5}>
+                <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                  Image path
+                </Typography>
               <TextField
-                label="Image path"
                 placeholder="/assets/team_png/ivan.png"
                 value={form.image}
                 onChange={(e) => setForm({ ...form, image: e.target.value })}
               />
+              </Stack>
 
               <Box display="flex" alignItems="center" gap={1}>
                 <input
@@ -414,6 +443,7 @@ async function moveDown(id: number) {
                 sx={{ width: 40, height: 40 }}
                 />
               </Box>
+              
               <Typography variant="caption" color="text.secondary">
                 Tip: You can paste a path (e.t. /assets/team_png/name.png) or click <strong>Upload image</strong>.
                 Uploaded files are saved to <code>/public/assets/team/</code>
