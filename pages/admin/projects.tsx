@@ -9,6 +9,8 @@ import {
 } from "@mui/material";
 import { FiEdit2, FiTrash2, FiPlus, FiArrowUp, FiArrowDown, FiImage } from "react-icons/fi";
 import { AdminNav } from "../../src/components/admin/AdminNav";
+import Link from "next/link";
+import { CardActionArea } from "@mui/material";
 
 const PlusIcon: any = FiPlus;
 const EditIcon: any = FiEdit2;
@@ -52,7 +54,6 @@ export default function AdminProjects() {
   });
 
   const fileCoverRef = useRef<HTMLInputElement>(null);
-  const fileMiddleRef = useRef<HTMLInputElement>(null);
   const filesGalleryRef = useRef<HTMLInputElement>(null);
 
   const filtered = useMemo(
@@ -100,11 +101,28 @@ export default function AdminProjects() {
   }
 
   async function uploadMany(files: FileList): Promise<string[]> {
-    const fd = new FormData();
-    Array.from(files).forEach((f) => fd.append("files", f));
-    const res = await fetch("/api/upload-images", { method: "POST", body: fd });
-    const data = await res.json();
-    return data.paths; // your endpoint returns { paths: [] }
+    const result: string[] = [];
+
+    // Reuse the single-file upload API for each file
+    for (const file of Array.from(files)) {
+      const fd = new FormData();
+      fd.append("file", file);
+
+      const res = await fetch("/api/upload-image", {
+        method: "POST",
+        body: fd,
+      });
+
+      const data = await res.json();
+
+      if (typeof data.path === "string") {
+        result.push(data.path);
+      } else {
+        console.warn("Unexpected upload-image response:", data);
+      }
+    }
+
+    return result;
   }
 
   async function handleSave() {
@@ -142,21 +160,34 @@ export default function AdminProjects() {
   }
 
   async function move(id: string, dir: "up" | "down") {
-    const idx = items.findIndex((i) => i.id === id);
+    // Decide which list we're moving within:
+    // all projects, of just the current category
+    const list =
+    filter === "Alle"
+    ? items
+    : items.filter((p) => p.type === filter);
+
+    const idx = list.findIndex((p) => p.id === id);
     if (idx === -1) return;
+
     const swapIdx = dir === "up" ? idx - 1 : idx + 1;
-    if (swapIdx < 0 || swapIdx >= items.length) return;
-    const a = items[idx],
-      b = items[swapIdx];
+    if (swapIdx < 0 || swapIdx >= list.length) return;
+
+    // Both a and b come from the SAME list
+    const a = list[idx];
+    const b = list[swapIdx];
+
     const payload = [
       { id: a.id, order: b.order },
       { id: b.id, order: a.order },
     ];
+
     await fetch("/api/projects", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
+
     await fetchItems();
   }
 
@@ -195,6 +226,15 @@ export default function AdminProjects() {
           {filtered.map((p) => (
             <Grid item xs={12} md={6} lg={4} key={p.id}>
               <Card>
+                <Link href={`/admin/projects/${p.id}`}>
+                <a
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  display: "block",
+              }}
+              >
+                <CardActionArea>
                 {p.cover ? (
                   <CardMedia
                     component="img"
@@ -214,33 +254,39 @@ export default function AdminProjects() {
                   </Box>
                 )}
                 <CardContent>
+                  <Typography fontWeight="bold">{p.title}</Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {p.type}
+                  </Typography>
+                  <Typography variant="caption" color="text.secondary">
+                    Click to edit gallery
+                  </Typography>
+                  </CardContent>
+                  </CardActionArea>
+                  </a>
+                  </Link>
+
+                  {/* Action buttons stay outside CardActionArea so they don't trigger navigation */}
+                  <CardContent sx={{ pt: 0 }}>
                   <Stack
                     direction="row"
                     spacing={1}
                     alignItems="center"
                     justifyContent="space-between"
                   >
-                    <Box>
-                      <Typography fontWeight="bold">{p.title}</Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {p.type}
-                      </Typography>
-                    </Box>
-                    <Stack direction="row" spacing={1}>
-                      <IconButton onClick={() => move(p.id, "up")}>
-                        <ArrowUpIcon />
-                      </IconButton>
-                      <IconButton onClick={() => move(p.id, "down")}>
-                        <ArrowDownIcon />
-                      </IconButton>
-                      <IconButton onClick={() => openEdit(p)}>
-                        <EditIcon />
-                      </IconButton>
-                      <IconButton onClick={() => handleDelete(p.id)} color="error">
-                        <TrashIcon />
-                      </IconButton>
+                    <IconButton onClick={() => move(p.id, "up")}>
+                      <ArrowUpIcon />
+                    </IconButton>
+                    <IconButton onClick={() => move(p.id, "down")}>
+                      <ArrowDownIcon />
+                    </IconButton>
+                    <IconButton onClick={() => openEdit(p)}>
+                      <EditIcon />
+                    </IconButton>
+                    <IconButton onClick={() => handleDelete(p.id)} color="error">
+                      <TrashIcon />
+                    </IconButton>
                     </Stack>
-                  </Stack>
                 </CardContent>
               </Card>
             </Grid>
@@ -345,7 +391,7 @@ export default function AdminProjects() {
             
             <Stack direction="row" spacing={2} alignItems="center">
               <Button onClick={() => fileCoverRef.current?.click()}>
-                Upload Cover
+                Upload Cover image (main thumbnail)
               </Button>
               <Typography variant="body2" color="text.secondary">
                 {form.cover || "No file"}
@@ -363,25 +409,6 @@ export default function AdminProjects() {
               />
             </Stack>
             <Stack direction="row" spacing={2} alignItems="center">
-              <Button onClick={() => fileMiddleRef.current?.click()}>
-                Upload Middle Pic
-              </Button>
-              <Typography variant="body2" color="text.secondary">
-                {form.middlePic || "No file"}
-              </Typography>
-              <input
-                ref={fileMiddleRef}
-                type="file"
-                hidden
-                onChange={async (e) => {
-                  if (e.target.files?.[0]) {
-                    const p = await uploadOne(e.target.files[0]);
-                    setForm((f) => ({ ...f, middlePic: p }));
-                  }
-                }}
-              />
-            </Stack>
-            <Stack direction="row" spacing={2} alignItems="center">
               <Button onClick={() => filesGalleryRef.current?.click()}>
                 Upload Gallery
               </Button>
@@ -394,13 +421,20 @@ export default function AdminProjects() {
                 hidden
                 multiple
                 onChange={async (e) => {
-                  if (e.target.files && e.target.files.length) {
-                    const paths = await uploadMany(e.target.files);
+                  const fileList = e.target.files;
+                  if (!fileList || !fileList.length) return;
+                  
+                  const paths = await uploadMany(fileList);
+                  if (!paths || paths.length === 0) return;
+
+
                     setForm((f) => ({
                       ...f,
                       pictures: [...(f.pictures ?? []), ...paths],
                     }));
-                  }
+
+                    // allow selectin the same files again later
+                    e.target.value = "";
                 }}
               />
             </Stack>

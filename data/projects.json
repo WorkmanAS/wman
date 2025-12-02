@@ -5,16 +5,15 @@
     "shortDescription": "",
     "description": "",
     "address": "Stortorvet 7, Oslo",
-    "customer": "S7",
+    "customer": "",
     "type": "Bygginredning",
-    "slug": "1",
-    "cover": "/assets/projects/bygginnredning/stortorvet7/hero.jpg",
+    "slug": "stortorvet-7-1",
+    "cover": "/assets/projects/bygginnredning/stortorvet7/pic16.jpg",
     "middlePic": "/assets/projects/bygginnredning/stortorvet7/middle.jpg",
     "afterPicDiscription": "",
     "pictures": [
-      "/assets/projects/bygginnredning/stortorvet7/pic0.jpg",
       "/assets/projects/bygginnredning/stortorvet7/pic1.jpg",
-      "/assets/projects/bygginnredning/stortorvet7/pic2.jpg",
+      "/assets/projects/bygginnredning/stortorvet7/pic0.jpg",
       "/assets/projects/bygginnredning/stortorvet7/pic3.jpg",
       "/assets/projects/bygginnredning/stortorvet7/pic4.jpg",
       "/assets/projects/bygginnredning/stortorvet7/pic5.jpg",
@@ -36,7 +35,7 @@
     ],
     "order": 1,
     "createdAt": "2025-11-18T08:56:25.418Z",
-    "updatedAt": "2025-11-18T08:56:25.418Z",
+    "updatedAt": "2025-12-02T12:58:59.666Z",
     "published": true
   },
   {
@@ -47,7 +46,7 @@
     "address": "Briskeveien 3, Oslo",
     "customer": "",
     "type": "Entreprenør",
-    "slug": "5",
+    "slug": "briskeveien-3",
     "cover": "/assets/projects/entreprenor/Briskeveien3bolig/hero.jpg",
     "middlePic": "/assets/projects/entreprenor/Briskeveien3bolig/middle.jpg",
     "afterPicDiscription": "",
@@ -100,7 +99,7 @@
     ],
     "order": 2,
     "createdAt": "2025-11-18T08:56:25.418Z",
-    "updatedAt": "2025-11-18T08:56:25.418Z",
+    "updatedAt": "2025-12-02T12:59:37.154Z",
     "published": true
   },
   {
@@ -109,9 +108,9 @@
     "shortDescription": "",
     "description": "",
     "address": "Stortorvet 7, Oslo",
-    "customer": "S7, Henriksen AS",
+    "customer": "Henriksen AS",
     "type": "Bygginredning",
-    "slug": "2",
+    "slug": "stortorvet-7-2",
     "cover": "/assets/projects/bygginnredning/stortorvet7henrik/hero.jpg",
     "middlePic": "/assets/projects/bygginnredning/stortorvet7henrik/middle.jpg",
     "afterPicDiscription": "",
@@ -140,7 +139,7 @@
     ],
     "order": 3,
     "createdAt": "2025-11-18T08:56:25.418Z",
-    "updatedAt": "2025-11-18T08:56:25.418Z",
+    "updatedAt": "2025-12-02T12:59:17.136Z",
     "published": true
   },
   {
@@ -151,7 +150,7 @@
     "address": "Verkstedalleen 13, Strømmen",
     "customer": "",
     "type": "Entreprenør",
-    "slug": "6",
+    "slug": "verkstedalleen-13",
     "cover": "/assets/projects/entreprenor/Verkstedalleen13/hero.jpg",
     "middlePic": "/assets/projects/entreprenor/Verkstedalleen13/middle.jpg",
     "afterPicDiscription": "",
@@ -173,7 +172,7 @@
     ],
     "order": 4,
     "createdAt": "2025-11-18T08:56:25.418Z",
-    "updatedAt": "2025-11-18T08:56:25.418Z",
+    "updatedAt": "2025-12-02T12:59:55.150Z",
     "published": true
   },
   {
@@ -182,9 +181,9 @@
     "shortDescription": "",
     "description": "",
     "address": "Drammensveien 126, Oslo",
-    "customer": "Thune Eureka",
+    "customer": "",
     "type": "Bygginredning",
-    "slug": "3",
+    "slug": "drammensveien-126",
     "cover": "/assets/projects/bygginnredning/drammensveien126/hero.jpg",
     "middlePic": "/assets/projects/bygginnredning/drammensveien126/middle.jpg",
     "afterPicDiscription": "",
@@ -216,7 +215,7 @@
     ],
     "order": 5,
     "createdAt": "2025-11-18T08:56:25.418Z",
-    "updatedAt": "2025-11-18T08:56:25.418Z",
+    "updatedAt": "2025-12-02T13:00:42.068Z",
     "published": true
   },
   {
@@ -227,7 +226,7 @@
     "address": "Professor Dahls gate 44A og B, Oslo",
     "customer": "",
     "type": "Renovering",
-    "slug": "7",
+    "slug": "professor-dahls-gate-44a-og-b",
     "cover": "/assets/projects/renovering/Frognerbarnehus/hero.jpg",
     "middlePic": "/assets/projects/renovering/Frognerbarnehus/middle.jpg",
     "afterPicDiscription": "",
@@ -264,7 +263,7 @@
     ],
     "order": 6,
     "createdAt": "2025-11-18T08:56:25.418Z",
-    "updatedAt": "2025-11-18T08:56:25.418Z",
+    "updatedAt": "2025-12-02T13:01:33.515Z",
     "published": true
   },
   {
@@ -275,7 +274,7 @@
     "address": "Holgerlystveien 10B, Oslo",
     "customer": "",
     "type": "Serviceoppdrag",
-    "slug": "8",
+    "slug": "holgerlystveien-10b",
     "cover": "/assets/projects/serviceoppdrag/Holgerlystveien10B/hero.jpg",
     "middlePic": "/assets/projects/serviceoppdrag/Holgerlystveien10B/middle.jpg",
     "afterPicDiscription": "",
@@ -287,7 +286,7 @@
     ],
     "order": 7,
     "createdAt": "2025-11-18T08:56:25.418Z",
-    "updatedAt": "2025-11-18T08:56:25.418Z",
+    "updatedAt": "2025-12-02T13:01:58.052Z",
     "published": true
   },
   {
@@ -298,7 +297,7 @@
     "address": "Rådyrlia 20, 1270 Oslo",
     "customer": "",
     "type": "Serviceoppdrag",
-    "slug": "9",
+    "slug": "raadyrlia-20",
     "cover": "/assets/projects/serviceoppdrag/Radyrlia20/hero.jpg",
     "middlePic": "/assets/projects/serviceoppdrag/Radyrlia20/middle.jpg",
     "afterPicDiscription": "",
@@ -312,7 +311,7 @@
     ],
     "order": 8,
     "createdAt": "2025-11-18T08:56:25.418Z",
-    "updatedAt": "2025-11-18T08:56:25.418Z",
+    "updatedAt": "2025-12-02T13:02:25.398Z",
     "published": true
   },
   {
@@ -323,7 +322,7 @@
     "address": "Idrettsveien 11, Løken",
     "customer": "",
     "type": "Entreprenør",
-    "slug": "10",
+    "slug": "idrettsveien-11",
     "cover": "/assets/projects/entreprenor/Idrettsveien11/hero.jpg",
     "middlePic": "/assets/projects/entreprenor/Idrettsveien11/hero.jpg",
     "afterPicDiscription": "",
@@ -355,7 +354,7 @@
     ],
     "order": 9,
     "createdAt": "2025-11-18T08:56:25.418Z",
-    "updatedAt": "2025-11-18T08:56:25.418Z",
+    "updatedAt": "2025-12-02T13:02:42.821Z",
     "published": true
   },
   {
@@ -366,7 +365,7 @@
     "address": "DHP, Drammen",
     "customer": "",
     "type": "Entreprenør",
-    "slug": "41",
+    "slug": "dhp",
     "cover": "/assets/projects/entreprenor/dhp/hero.jpg",
     "middlePic": "/assets/projects/entreprenor/dhp/middle.jpg",
     "afterPicDiscription": "",
@@ -382,7 +381,7 @@
     ],
     "order": 10,
     "createdAt": "2025-11-18T08:56:25.418Z",
-    "updatedAt": "2025-11-18T08:56:25.418Z",
+    "updatedAt": "2025-12-02T13:02:52.550Z",
     "published": true
   },
   {
@@ -393,7 +392,7 @@
     "address": "Venterom 2021 | Bryne",
     "customer": "",
     "type": "Bygginredning",
-    "slug": "20",
+    "slug": "venterom-2021-bryne",
     "cover": "/assets/projects/bygginnredning/bryne-venterom-2021/hero.jpg",
     "middlePic": "/assets/projects/bygginnredning/bryne-venterom-2021/hero.jpg",
     "afterPicDiscription": "",
@@ -411,9 +410,9 @@
       "/assets/projects/bygginnredning/bryne-venterom-2021/11.jpg",
       "/assets/projects/bygginnredning/bryne-venterom-2021/12.jpg"
     ],
-    "order": 11,
+    "order": 12,
     "createdAt": "2025-11-18T08:56:25.418Z",
-    "updatedAt": "2025-11-18T08:56:25.418Z",
+    "updatedAt": "2025-12-02T13:03:13.046Z",
     "published": true
   },
   {
@@ -424,7 +423,7 @@
     "address": "Sykehus | Hammerfest",
     "customer": "",
     "type": "Bygginredning",
-    "slug": "21",
+    "slug": "sykehus-hammerfest",
     "cover": "/assets/projects/bygginnredning/hammerfest-sykehus/front.jpg",
     "middlePic": "/assets/projects/bygginnredning/hammerfest-sykehus/front.jpg",
     "afterPicDiscription": "",
@@ -438,9 +437,9 @@
       "/assets/projects/bygginnredning/hammerfest-sykehus/11.jpg",
       "/assets/projects/bygginnredning/hammerfest-sykehus/front.jpg"
     ],
-    "order": 12,
+    "order": 13,
     "createdAt": "2025-11-18T08:56:25.418Z",
-    "updatedAt": "2025-11-18T08:56:25.418Z",
+    "updatedAt": "2025-12-02T13:03:44.427Z",
     "published": true
   },
   {
@@ -451,7 +450,7 @@
     "address": "Presenhus",
     "customer": "",
     "type": "Bygginredning",
-    "slug": "22",
+    "slug": "presenhus",
     "cover": "/assets/projects/bygginnredning/Presenhus/hero.jpg",
     "middlePic": "/assets/projects/bygginnredning/Presenhus/hero.jpg",
     "afterPicDiscription": "",
@@ -467,9 +466,9 @@
       "/assets/projects/bygginnredning/Presenhus/11.jpg",
       "/assets/projects/bygginnredning/Presenhus/hero.jpg"
     ],
-    "order": 13,
+    "order": 14,
     "createdAt": "2025-11-18T08:56:25.418Z",
-    "updatedAt": "2025-11-18T08:56:25.418Z",
+    "updatedAt": "2025-12-02T13:04:02.775Z",
     "published": true
   },
   {
@@ -480,7 +479,7 @@
     "address": "Ruseløkka skole | Oslo",
     "customer": "",
     "type": "Bygginredning",
-    "slug": "23",
+    "slug": "ruselokka-skole",
     "cover": "/assets/projects/bygginnredning/Ruslokka-skole/hero.jpg",
     "middlePic": "/assets/projects/bygginnredning/Ruslokka-skole/hero.jpg",
     "afterPicDiscription": "",
@@ -494,9 +493,9 @@
       "/assets/projects/bygginnredning/Ruslokka-skole/13.jpg",
       "/assets/projects/bygginnredning/Ruslokka-skole/hero.jpg"
     ],
-    "order": 14,
+    "order": 15,
     "createdAt": "2025-11-18T08:56:25.418Z",
-    "updatedAt": "2025-11-18T08:56:25.418Z",
+    "updatedAt": "2025-12-02T13:04:22.526Z",
     "published": true
   },
   {
@@ -507,7 +506,7 @@
     "address": "Venterom 2021 | Stavanger",
     "customer": "",
     "type": "Bygginredning",
-    "slug": "24",
+    "slug": "venterom-2021-stavanger",
     "cover": "/assets/projects/bygginnredning/Stavanger venterom 2021/hero.jpg",
     "middlePic": "/assets/projects/bygginnredning/Stavanger venterom 2021/hero.jpg",
     "afterPicDiscription": "",
@@ -526,9 +525,9 @@
       "/assets/projects/bygginnredning/Stavanger venterom 2021/12.jpg",
       "/assets/projects/bygginnredning/Stavanger venterom 2021/hero.jpg"
     ],
-    "order": 15,
+    "order": 16,
     "createdAt": "2025-11-18T08:56:25.418Z",
-    "updatedAt": "2025-11-18T08:56:25.418Z",
+    "updatedAt": "2025-12-02T13:03:30.512Z",
     "published": true
   },
   {
@@ -539,7 +538,7 @@
     "address": "Telenor, bygg M | Fornebu",
     "customer": "",
     "type": "Bygginredning",
-    "slug": "25",
+    "slug": "telenor-bygg-m-fornebu",
     "cover": "/assets/projects/bygginnredning/Telenor Bygg M/hero.jpg",
     "middlePic": "/assets/projects/bygginnredning/Telenor Bygg M/hero.jpg",
     "afterPicDiscription": "",
@@ -554,9 +553,9 @@
       "/assets/projects/bygginnredning/Telenor Bygg M/9.jpg",
       "/assets/projects/bygginnredning/Telenor Bygg M/hero.jpg"
     ],
-    "order": 16,
+    "order": 17,
     "createdAt": "2025-11-18T08:56:25.418Z",
-    "updatedAt": "2025-11-18T08:56:25.418Z",
+    "updatedAt": "2025-12-02T13:04:43.332Z",
     "published": true
   },
   {
@@ -567,7 +566,7 @@
     "address": "Markus Tranes Vei 100, Fjellhamar",
     "customer": "",
     "type": "Bygginredning",
-    "slug": "31",
+    "slug": "fjellhamar-skole",
     "cover": "/assets/projects/bygginnredning/fjellhamarskole/hero.jpg",
     "middlePic": "/assets/projects/bygginnredning/fjellhamarskole/middle.jpg",
     "afterPicDiscription": "",
@@ -631,9 +630,9 @@
       "/assets/projects/bygginnredning/fjellhamarskole/pic56.jpg",
       "/assets/projects/bygginnredning/fjellhamarskole/pic57.jpg"
     ],
-    "order": 17,
+    "order": 18,
     "createdAt": "2025-11-18T08:56:25.418Z",
-    "updatedAt": "2025-11-18T08:56:25.418Z",
+    "updatedAt": "2025-12-02T13:04:58.992Z",
     "published": true
   },
   {
@@ -642,9 +641,9 @@
     "shortDescription": "",
     "description": "",
     "address": "Tesla | Porsgrunn",
-    "customer": "S7",
+    "customer": "",
     "type": "Bygginredning",
-    "slug": "32",
+    "slug": "tesla-porsgrunn",
     "cover": "/assets/projects/bygginnredning/Tesla Porsgrunn/hero.jpg",
     "middlePic": "/assets/projects/bygginnredning/Tesla Porsgrunn/middle.jpg",
     "afterPicDiscription": "",
@@ -671,9 +670,9 @@
       "/assets/projects/bygginnredning/Tesla Porsgrunn/hero.jpg",
       "/assets/projects/bygginnredning/Tesla Porsgrunn/middle.jpg"
     ],
-    "order": 18,
+    "order": 19,
     "createdAt": "2025-11-18T08:56:25.418Z",
-    "updatedAt": "2025-11-18T08:56:25.418Z",
+    "updatedAt": "2025-12-02T13:05:21.113Z",
     "published": true
   },
   {
@@ -682,9 +681,9 @@
     "shortDescription": "",
     "description": "",
     "address": "Skien Kverndalen",
-    "customer": "S7",
+    "customer": "",
     "type": "Bygginredning",
-    "slug": "33",
+    "slug": "skien-kverndalen",
     "cover": "/assets/projects/bygginnredning/Skien Kverndalen/hero.jpg",
     "middlePic": "/assets/projects/bygginnredning/Skien Kverndalen/middle.jpg",
     "afterPicDiscription": "",
@@ -702,9 +701,9 @@
       "/assets/projects/bygginnredning/Skien Kverndalen/hero.jpg",
       "/assets/projects/bygginnredning/Skien Kverndalen/middle.jpg"
     ],
-    "order": 19,
+    "order": 20,
     "createdAt": "2025-11-18T08:56:25.418Z",
-    "updatedAt": "2025-11-18T08:56:25.418Z",
+    "updatedAt": "2025-12-02T13:05:36.829Z",
     "published": true
   },
   {
@@ -713,9 +712,9 @@
     "shortDescription": "",
     "description": "",
     "address": "Fridtjof Nansens vei 12 | Oslo",
-    "customer": "S7",
+    "customer": "",
     "type": "Bygginredning",
-    "slug": "34",
+    "slug": "fridtjof-nansen-vei-12",
     "cover": "/assets/projects/bygginnredning/Fridtjof Nansens vei 12/hero.jpg",
     "middlePic": "/assets/projects/bygginnredning/Fridtjof Nansens vei 12/middle.jpg",
     "afterPicDiscription": "",
@@ -749,9 +748,9 @@
       "/assets/projects/bygginnredning/Fridtjof Nansens vei 12/hero.jpg",
       "/assets/projects/bygginnredning/Fridtjof Nansens vei 12/middle.jpg"
     ],
-    "order": 20,
+    "order": 21,
     "createdAt": "2025-11-18T08:56:25.418Z",
-    "updatedAt": "2025-11-18T08:56:25.418Z",
+    "updatedAt": "2025-12-02T13:05:56.909Z",
     "published": true
   },
   {
@@ -762,7 +761,7 @@
     "address": "Semsveien 126, Asker",
     "customer": "",
     "type": "Entreprenør",
-    "slug": "36",
+    "slug": "semsveien-126",
     "cover": "/assets/projects/entreprenor/asker/2.jpg",
     "middlePic": "/assets/projects/entreprenor/asker/3.jpg",
     "afterPicDiscription": "",
@@ -779,9 +778,9 @@
       "/assets/projects/entreprenor/asker/10.jpg",
       "/assets/projects/entreprenor/asker/11.jpg"
     ],
-    "order": 21,
+    "order": 22,
     "createdAt": "2025-11-18T08:56:25.418Z",
-    "updatedAt": "2025-11-18T08:56:25.418Z",
+    "updatedAt": "2025-12-02T13:06:10.894Z",
     "published": true
   }
 ]
