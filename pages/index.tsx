@@ -52,7 +52,7 @@ const Home: NextPage = () => {
         <LocationOn htmlColor={colors.white} />
         <Box width="9px" height={!isDesktop ? "9px" : 0} />
         <Typography fontSize="16px" color={colors.white} textAlign={!isDesktop ? "center" : "left"}>
-          Inngang 3 Hasleveien 28<br />0571 Oslo
+          Standardveien 1<br />0581 Oslo
         </Typography>
       </Box>
       <Box height="15px" />

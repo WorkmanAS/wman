@@ -69,9 +69,9 @@ export const Footer: React.FC<FooterProps> = ({ variant = "default" }) => {
             color={colors.white}
             {...(!isDesktop && { textAlign: "center" })}
           >
-            Inngang 3 Hasleveien 28
+            Standardveien 1
             <br />
-            0571 Oslo
+            0581 Oslo
           </Typography>
         </Box>
       </Box>
